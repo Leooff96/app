@@ -16,8 +16,8 @@
 
 	<build>
 		<finalName>app</finalName>
-		<plugins>
-			<!-- <plugin>
+		 <plugins>
+			<!--<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
@@ -33,8 +33,8 @@
 							-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000</MAVEN_OPTS>
 					</systemProperties>
 
-				</configuration>
-			</plugin> -->
+				</configuration> 
+			</plugin>-->
 
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -49,6 +49,7 @@
 		</plugins>
 	</build>
 
+	<!-- Spring Web -->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -62,6 +63,28 @@
 			<version>5.0.0.RELEASE</version>
 		</dependency>
 
+		<!-- Banco de dados -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>4.3.13.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.2.11.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>6.0.6</version>
+			<scope>runtime</scope>
+		</dependency>
+
+
+		<!-- Servilet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -82,11 +105,14 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- Validador -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.2.2.Final</version>
 		</dependency>
+
+
 
 	</dependencies>
 
