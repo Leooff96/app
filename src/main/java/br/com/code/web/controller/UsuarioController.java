@@ -26,6 +26,21 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioDao dao;
 	
+	@ModelAttribute("sexos")
+	public TipoSexo[] tipoSexo() {
+		return TipoSexo.values();
+	}
+	
+	@RequestMapping(value = "/sexo", method = RequestMethod.GET)
+	public ModelAndView listaPosSexo(@ModelAttribute("tipoSexo") TipoSexo tipoSexo) {
+		
+		if(tipoSexo == null) {
+			return new ModelAndView("redirect:/usuario/todos");
+		}
+
+		return new ModelAndView("/user/list", "usuarios",dao.getBySexo(tipoSexo));
+	}
+ 	
 	@RequestMapping(value = "/todos", method = RequestMethod.GET)
 	public ModelAndView listaTodos(ModelMap model) {
 		model.addAttribute("usuarios", dao.getTodos());
@@ -71,6 +86,8 @@ public class UsuarioController {
 		attr.addFlashAttribute("message","Usuario excluido com sucesso");
 		return "redirect:/usuario/todos";
 	}
+	
+
 	
 	
 }

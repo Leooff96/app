@@ -20,10 +20,10 @@ public class SpringJpaConfig {
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
-		ds.setDriverClassName("com.mysql.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://mysql-mysqlleooff.193b.starter-ca-central-1.openshiftapps.com:3306/apps?createDatabaseIfNotExist=true");
+		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+		ds.setUrl("jdbc:mysql://localhost:3306/db_leo?useTimezone=true&serverTimezone=UTC&useSSL=false");
 		ds.setUsername("leooff");
-		ds.setPassword("leo1230");
+		ds.setPassword("root@1230");
 		return ds;
 	}
 
@@ -40,7 +40,7 @@ public class SpringJpaConfig {
 
 	private Properties jpaProperties() {
 		Properties props = new Properties();
-		props.setProperty("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
+		props.setProperty("hibernate.dialect","org.hibernate.dialect.MySQL57Dialect");
 		props.setProperty("hibernate.show_sql", "true");
 		props.setProperty("hibernate.format_sql", "true");
 		props.setProperty("hibernate.hbm2ddl.auto", "update");

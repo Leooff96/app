@@ -35,7 +35,7 @@ public class Usuario implements Serializable {
 	
 	@Column(nullable=false, length=50)
 	@NotBlank
-	@Size(min=3,max=50, message="Campo requerido entre {min} e {max}")
+	@Size(min=3,max=50)
 	private String sobrenome;
 	
 	@Column(name="tipo_sexo",nullable=false)
@@ -43,7 +43,7 @@ public class Usuario implements Serializable {
 	private TipoSexo sexo;
 	
 	@Column(name="data_nascimento",nullable=false)
-	@NotNull(message="O campo de data é requerido")
+	@NotNull(message= "{data.notnull}")
 	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate data;
 	
