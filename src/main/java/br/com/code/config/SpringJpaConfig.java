@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -22,7 +21,7 @@ public class SpringJpaConfig {
 	public DataSource dataSource() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName("com.mysql.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://0.0.0.0:3306/apps?createDatabaseIfNotExist=true");
+		ds.setUrl("jdbc:mysql://127.0.0.0:3306/apps?createDatabaseIfNotExist=true");
 		ds.setUsername("leooff");
 		ds.setPassword("leo1230");
 		return ds;
@@ -41,6 +40,7 @@ public class SpringJpaConfig {
 
 	private Properties jpaProperties() {
 		Properties props = new Properties();
+		props.setProperty("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
 		props.setProperty("hibernate.show_sql", "true");
 		props.setProperty("hibernate.format_sql", "true");
 		props.setProperty("hibernate.hbm2ddl.auto", "update");
@@ -52,7 +52,6 @@ public class SpringJpaConfig {
 	public JpaTransactionManager transactionManager(EntityManagerFactory factory) {
 		JpaTransactionManager tx = new JpaTransactionManager();
 		tx.setEntityManagerFactory(factory);
-		tx.setJpaDialect(new HibernateJpaDialect());
 		return tx;
 	}
 }
