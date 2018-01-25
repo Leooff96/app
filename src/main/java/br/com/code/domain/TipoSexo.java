@@ -1,6 +1,6 @@
 package br.com.code.domain;
 
-public enum TipoSexo {
+public enum TipoSexo{
 	FEMININO('F'),MASCULINO('M');
 	
 	private TipoSexo(char desc) {

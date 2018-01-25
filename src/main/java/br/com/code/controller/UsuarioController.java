@@ -1,4 +1,4 @@
-package br.com.code.web.controller;
+package br.com.code.controller;
 
 import javax.validation.Valid;
 
@@ -44,6 +44,7 @@ public class UsuarioController {
 	@RequestMapping(value = "/todos", method = RequestMethod.GET)
 	public ModelAndView listaTodos(ModelMap model) {
 		model.addAttribute("usuarios", dao.getTodos());
+		System.out.println(dao.getTodos().toString());
 		return new ModelAndView("/user/list", model);
 	}
 	
